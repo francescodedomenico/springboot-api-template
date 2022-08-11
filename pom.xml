@@ -92,6 +92,24 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.graalvm.nativeimage</groupId>
+				<artifactId>native-image-maven-plugin</artifactId>
+				<version>22.2.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>native-image</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<!--<mainClass>com.acme.Main</mainClass>-->
+					<!--<imageName>${project.name}</imageName>-->
+					<!--<buildArgs></buildArgs>-->
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<repositories>
