@@ -7,7 +7,10 @@ A simple template for Spring Boot Native Projects
 ### Windows
 
 On Windows you need [GraalVM SDK](https://www.graalvm.org/) installed, this project has been tested over CE edition.
+
 Furthermore, you will need Visual Studio Build Tools if you want to compile the jar into a local executable (.exe) file.
+
+Windows Subsystem for Linux (WSL) is suggested for some inline shell scripting.
 
 You can generate a native jar by simply using the
 
@@ -19,6 +22,7 @@ You will find your jar inside __target__ folder. Extract the jar file into a wor
 
 ```
 PS> cd extracted_jar
+PS> Xcopy /E /I META-INF\ BOOT-INF\classes\META-INF
 PS> $pwd
 ```
 Copy the current __working directory__, you will need this later.
@@ -26,7 +30,7 @@ Copy the current __working directory__, you will need this later.
 Execute the __x64 Native Tools Command Prompt for VS 2019__
 ```
 cmd> cd <previously_obtained_working_directory>
-cmd> wsl -- find BOOT-INF/lib `| wsl tr '\n' ';'
+cmd> wsl -- find BOOT-INF/lib | wsl tr '\n' ';'
 ```
 
 last command should output a full list of external jars ';' separated, copy this whole buffer aside.

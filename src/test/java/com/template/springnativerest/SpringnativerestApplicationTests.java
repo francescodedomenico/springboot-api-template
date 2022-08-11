@@ -1,10 +1,10 @@
-package com.template.SpringNative;
+package com.template.springnativerest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringNativeApplicationTests {
+class SpringnativerestApplicationTests {
 
 	@Test
 	void contextLoads() {
