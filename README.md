@@ -1,9 +1,30 @@
 # springboot-api-template
-A simple template for Spring Boot Native Projects
+This projects aims to be a template for creating Microservices using Spring Boot Native. It's not meant to be packaged of features, rather being a minimal projects that ships with essential features like:
+
+* Embedded Tomcat webserver
+* Extensible API Exception handler with customizable error codes
+* Built in OpenAPI 3 Swagger generation
+* Being shipped with the latest LTS version of GraalVM-Java
+
+## Prerequisites
+
+* GraalVM Java 17 JDK
+* Maven
+
+## Building Docker image
+Ensure your local Docker demon is running
+
+```
+mvn spring-boot:build-native
+docker run --rm -p 8080:8080 springnativerest:0.0.1-SNAPSHOT
+```
+
 
 
 ## Building Native Image
 
+### *NIX
+You may follow the [official Spring documentation](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#_with_code_native_image_code).
 ### Windows
 
 On Windows you need [GraalVM SDK](https://www.graalvm.org/) installed, this project has been tested over CE edition.
@@ -21,6 +42,7 @@ PS> mvn package
 You will find your jar inside __target__ folder. Extract the jar file into a working directory __extracted_jar__.
 
 ```
+PS> Expand-Archive -LiteralPath springnativerest-0.0.1-SNAPSHOT.jar -DestinationPath ./extracted_jar
 PS> cd extracted_jar
 PS> Xcopy /E /I META-INF\ BOOT-INF\classes\META-INF
 PS> $pwd
@@ -40,8 +62,8 @@ BOOT-INF/lib;BOOT-INF/lib/classgraph-4.8.147.jar;BOOT-INF/lib/commons-lang3-3.12
 ```
 You can now run the __native-image__ command:
 ```
-cmd> native-image -H:Name=SpringNative -cp BOOT-INF/classes;`<previously_obtained_jars_list>`
+cmd> native-image -H:Name=springnativerest -cp BOOT-INF/classes;`<previously_obtained_jars_list>`
 ```
 
-
-
+## Known issues
+The Exception handler doesn't resolve the exception response when it is compiled as native image.

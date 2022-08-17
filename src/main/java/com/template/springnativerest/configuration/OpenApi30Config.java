@@ -16,5 +16,13 @@ public class OpenApi30Config {
   @Value("${springdoc.apiVersion}")
   private String apiVersion;
 
- 
+
+  public String getModuleName() {
+    return this.moduleName;
+  }
+  
+  public String getApiVersion() {
+    return this.apiVersion;
+  }
+
 }
